@@ -1,0 +1,11 @@
+aws redshift enable-logging \
+  --cluster-identifier crm-dev-mdp-webai \
+  --bucket-name abd \
+  --s3-key-prefix bccc \
+  --region us-east-1
+
+aws redshift modify-cluster \
+  --cluster-identifier crm-dev-mdp-webai \
+  --manage-master-password \
+  --master-user-password-secret-kms-key-id arn:aws:kms:us-east-1:123456789012:key/custom-kms-key-id \
+  --region us-east-1
