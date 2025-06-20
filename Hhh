@@ -1,0 +1,5 @@
+aws redshift modify-cluster \
+  --cluster-identifier <your-cluster-id> \
+  --manage-master-password \
+  --master-user-password-secret-arn arn:aws:secretsmanager:us-east-1:123456789012:secret:your-secret-name \
+  --region us-east-1
