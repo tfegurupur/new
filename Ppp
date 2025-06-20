@@ -1,0 +1,12 @@
+aws secretsmanager create-secret \
+  --name redshift-master-creds \
+  --description "Redshift master user credentials" \
+  --secret-string '{"username":"admin","password":"YourStrongPassword123!"}' \
+  --kms-key-id arn:aws:kms:us-east-1:123456789012:key/5dc43cc2-6c24-48b2-882a-bcd538e97690 \
+  --region us-east-1
+
+aws redshift modify-cluster \
+  --cluster-identifier crn-dev-mdp-webai \
+  --manage-master-password \
+  --master-user-password-secret-arn arn:aws:secretsmanager:us-east-1:123456789012:secret:redshift-master-creds-abc123 \
+  --region us-east-1
